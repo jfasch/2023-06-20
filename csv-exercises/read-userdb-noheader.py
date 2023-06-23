@@ -1,8 +1,7 @@
 import sys
-import csv
 
-f = open(sys.argv[1], encoding='cp1252')
-rdr = csv.reader(f, delimiter=';', quotechar='"')
+import user_csv
 
-for id, firstname, lastname, birth in rdr:
-    print(f'ID:{id}, Firstname:{firstname}, Lastname:{lastname}, Date of birth: {birth}')
+user_records = user_csv.read_csv_noheader(sys.argv[1])
+for user in user_records:
+    print(user_csv.format_user(user))
